@@ -136,11 +136,11 @@ func configureUI() {
 
 	switch {
 	case fmtc.IsTrueColorSupported():
-		colorTagApp, colorTagVer = "{*}{#FF1D7C}", "{#FF1D7C}"
+		colorTagApp, colorTagVer = "{*}{&}{#FF1D7C}", "{#FF1D7C}"
 	case fmtc.Is256ColorsSupported():
-		colorTagApp, colorTagVer = "{*}{#197}", "{#197}"
+		colorTagApp, colorTagVer = "{*}{&}{#197}", "{#197}"
 	default:
-		colorTagApp, colorTagVer = "{*}{m}", "{m}"
+		colorTagApp, colorTagVer = "{*}{&}{m}", "{m}"
 	}
 }
 
