@@ -80,7 +80,29 @@ fmtc --generate-man | sudo gzip > /usr/share/man/man1/fmtc.1.gz
 ### Usage
 
 ```
+Usage: fmtc {options} data…
 
+Options
+
+  --error, -E        Print data to stderr
+  --line, -L         Don't print newline at the end
+  --no-color, -nc    Disable colors in output
+  --help, -h         Show this help message
+  --version, -v      Show version
+
+Examples
+
+  fmtc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
+  Print fmtc formatted message
+
+  fmtc -E "{r*}There is no user bob{!}"
+  Print fmtc formatted message to stderr
+
+  fmtc -nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
+  Print message without colors using -nc/--no-color option
+
+  echo "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}" | fmtc
+  Use stdin as a source of data
 ```
 
 ### CI Status
