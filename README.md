@@ -42,27 +42,27 @@ fmtc << EOF
 
 {*}Basic commands{!}
 
-  {y}${CMD_INSTALL}{!} {s-}restart-delay{!} {s-}..{!} Install farm on the system
-  {y}${CMD_UNINSTALL}{!} {s-}..............{!} Uninstall farm from the system
-  {y}${CMD_UPDATE}{!} {s-}.................{!} Update all images
-  {y}${CMD_USER_ADD}{!} {s}user{!} {s-}..........{!} Add new user
-  {y}${CMD_USER_ADD}{!} {s}user{!} {s-}..........{!} Add new user
-  {y}${CMD_USER_DEL}{!} {s}user{!} {s-}..........{!} Remove user and it containers
-  {y}${CMD_USER_MOD}{!} {s}user{!} {s-}..........{!} Modify user public key
+  {y}${CMD_INSTALL}{!} restart-delay{!}  Install farm on the system
+  {y}${CMD_UNINSTALL}{!}              Uninstall farm from the system
+  {y}${CMD_UPDATE}{!}                 Update all images
+  {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
+  {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
+  {y}${CMD_USER_DEL}{!} {s}user{!}          Remove user and it containers
+  {y}${CMD_USER_MOD}{!} {s}user{!}          Modify user public key
 
 {*}Containers commands{!}
 
-  {y}${CMD_START}{!} {s}user{!} {s-}image-name{!} {s-}....{!} Start containers for given user
-  {y}${CMD_RESTART}{!} {s}user{!} {s-}image-name{!} {s-}..{!} Restart containers for given user
-  {y}${CMD_STOP}{!} {s}user{!} {s-}image-name{!} {s-}.....{!} Stop containers for given user
-  {y}${CMD_START_ALL}{!} {s-}................{!} Start containers for all users
-  {y}${CMD_RESTART_ALL}{!} {s-}..............{!} Restart containers for all users
-  {y}${CMD_STOP_ALL}{!} {s-}.................{!} Stop containers for all users
+  {y}${CMD_START}{!} {s}user{!} {s-}image-name{!}    Start containers for given user
+  {y}${CMD_RESTART}{!} {s}user{!} {s-}image-name{!}  Restart containers for given user
+  {y}${CMD_STOP}{!} {s}user{!} {s-}image-name{!}     Stop containers for given user
+  {y}${CMD_START_ALL}{!}                Start containers for all users
+  {y}${CMD_RESTART_ALL}{!}              Restart containers for all users
+  {y}${CMD_STOP_ALL}{!}                 Stop containers for all users
 
 {*}Options{!}
 
-  {g}--help{!}, {g}-h{!} {s-}.....{!} Show this help message
-  {g}--version{!}, {g}-v{!} {s-}..{!} Show information about version
+  {g}--help{!}, {g}-h{!}     Show this help message
+  {g}--version{!}, {g}-v{!}  Show information about version
 
 EOF
 ```
