@@ -7,11 +7,15 @@
   <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
-<p align="center"><a href="#screenshots">Screenshots</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#ci-status">CI Status</a> • <a href="#contributing">Contributing</a> • <a href="#license">License</a></p>
+<p align="center"><a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#ci-status">CI Status</a> • <a href="#contributing">Contributing</a> • <a href="#license">License</a></p>
 
 <br/>
 
 `fmtc` is a simple utility for rendering [fmtc](https://github.com/essentialkaos/ek/tree/master/fmtc#readme) formatted data. You can use it instead of the `echo` command to print colored messages.
+
+<p align="center">
+  <img src="https://gh.kaos.st/fmtc.png" alt="fmtc preview">
+</p>
 
 ```bash
 # Simple formatted message
@@ -30,13 +34,38 @@ fmtc -nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
 
 # Also, fmtc supports the NO_COLOR environment variable (https://no-color.org)
 NO_COLOR=1 fmtc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
+
+# You can combine the use of fmtc with HEREDOC to reduce the number of fmtc calls
+fmtc << EOF
+
+{*}Usage:{!} rpmbuilder-farm {y}{command}{!} {s}arg…{!}
+
+{*}Basic commands{!}
+
+  {y}${CMD_INSTALL}{!} {s-}restart-delay{!} {s-}..{!} Install farm on the system
+  {y}${CMD_UNINSTALL}{!} {s-}..............{!} Uninstall farm from the system
+  {y}${CMD_UPDATE}{!} {s-}.................{!} Update all images
+  {y}${CMD_USER_ADD}{!} {s}user{!} {s-}..........{!} Add new user
+  {y}${CMD_USER_ADD}{!} {s}user{!} {s-}..........{!} Add new user
+  {y}${CMD_USER_DEL}{!} {s}user{!} {s-}..........{!} Remove user and it containers
+  {y}${CMD_USER_MOD}{!} {s}user{!} {s-}..........{!} Modify user public key
+
+{*}Containers commands{!}
+
+  {y}${CMD_START}{!} {s}user{!} {s-}image-name{!} {s-}....{!} Start containers for given user
+  {y}${CMD_RESTART}{!} {s}user{!} {s-}image-name{!} {s-}..{!} Restart containers for given user
+  {y}${CMD_STOP}{!} {s}user{!} {s-}image-name{!} {s-}.....{!} Stop containers for given user
+  {y}${CMD_START_ALL}{!} {s-}................{!} Start containers for all users
+  {y}${CMD_RESTART_ALL}{!} {s-}..............{!} Restart containers for all users
+  {y}${CMD_STOP_ALL}{!} {s-}.................{!} Stop containers for all users
+
+{*}Options{!}
+
+  {g}--help{!}, {g}-h{!} {s-}.....{!} Show this help message
+  {g}--version{!}, {g}-v{!} {s-}..{!} Show information about version
+
+EOF
 ```
-
-### Screenshots
-
-<p align="center">
-  <img src="https://gh.kaos.st/fmtc.png" alt="fmtc preview">
-</p>
 
 ### Installation
 
