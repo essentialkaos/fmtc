@@ -46,7 +46,6 @@ fmtc << EOF
   {y}${CMD_UNINSTALL}{!}              Uninstall farm from the system
   {y}${CMD_UPDATE}{!}                 Update all images
   {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
-  {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
   {y}${CMD_USER_DEL}{!} {s}user{!}          Remove user and it containers
   {y}${CMD_USER_MOD}{!} {s}user{!}          Modify user public key
 
