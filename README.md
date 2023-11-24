@@ -46,7 +46,6 @@ fmtc << EOF
   {y}${CMD_UNINSTALL}{!}              Uninstall farm from the system
   {y}${CMD_UPDATE}{!}                 Update all images
   {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
-  {y}${CMD_USER_ADD}{!} {s}user{!}          Add new user
   {y}${CMD_USER_DEL}{!} {s}user{!}          Remove user and it containers
   {y}${CMD_USER_MOD}{!} {s}user{!}          Modify user public key
 
@@ -66,6 +65,12 @@ fmtc << EOF
 
 EOF
 ```
+
+<details><summary><b>Information for SublimeText 4 users</b></summary><p>
+
+If you are using SublimeText 4 (`4075+`), we strongly recommend that you install [extended Bash syntax highlighting](https://github.com/essentialkaos/blackhole-theme-sublime/blob/master/bash-fmtc.sublime-syntax) with support for `fmtc` tags.
+
+</p></details>
 
 ### Installation
 
