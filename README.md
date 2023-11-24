@@ -7,7 +7,7 @@
   <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
-<p align="center"><a href="#installation">Installation</a> • <a href="#command-line-completion">Command-line completion</a> • <a href="#man-documentation">Man documentation</a> • <a href="#usage">Usage</a> • <a href="#ci-status">CI Status</a> • <a href="#contributing">Contributing</a> • <a href="#license">License</a></p>
+<p align="center"><a href="#screenshots">Screenshots</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#ci-status">CI Status</a> • <a href="#contributing">Contributing</a> • <a href="#license">License</a></p>
 
 <br/>
 
@@ -31,6 +31,12 @@ fmtc -nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
 # Also, fmtc supports the NO_COLOR environment variable (https://no-color.org)
 NO_COLOR=1 fmtc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
 ```
+
+### Screenshots
+
+<p align="center">
+  <img src="https://gh.kaos.st/fmtc.png" alt="fmtc preview">
+</p>
 
 ### Installation
 
