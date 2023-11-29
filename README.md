@@ -82,6 +82,13 @@ To build the `fmtc` from scratch, make sure you have a working Go 1.20+ workspac
 go install github.com/essentialkaos/fmtc@latest
 ```
 
+#### From [ESSENTIAL KAOS Public Repository](https://pkgs.kaos.st)
+
+```bash
+sudo yum install -y https://pkgs.kaos.st/kaos-repo-latest.el$(grep 'CPE_NAME' /etc/os-release | tr -d '"' | cut -d':' -f5).noarch.rpm
+sudo yum install fmtc
+```
+
 #### Prebuilt binaries
 
 You can download prebuilt binaries for Linux and macOS from [EK Apps Repository](https://apps.kaos.st/fmtc/latest):
