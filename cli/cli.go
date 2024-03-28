@@ -13,8 +13,6 @@ import (
 	"os"
 	"runtime"
 
-	_ "embed"
-
 	"github.com/essentialkaos/ek/v12/fmtc"
 	"github.com/essentialkaos/ek/v12/fsutil"
 	"github.com/essentialkaos/ek/v12/options"
