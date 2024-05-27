@@ -66,11 +66,8 @@ fmtc << EOF
 EOF
 ```
 
-<details><summary><b>Information for SublimeText 4 users</b></summary><p>
-
-If you are using SublimeText 4 (`4075+`), we strongly recommend that you install [extended Bash syntax highlighting](https://github.com/essentialkaos/blackhole-theme-sublime/blob/master/bash-fmtc.sublime-syntax) with support for `fmtc` tags.
-
-</p></details>
+> [!TIP]
+> If you are using SublimeText 4 (`4075+`), we strongly recommend that you install [extended Bash syntax highlighting](https://github.com/essentialkaos/blackhole-theme-sublime/blob/master/bash-fmtc.sublime-syntax) with support for `fmtc` tags.
 
 ### Installation
 
