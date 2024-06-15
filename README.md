@@ -1,10 +1,10 @@
-<p align="center"><a href="#readme"><img src="https://gh.kaos.st/fmtc.svg"/></a></p>
+<p align="center"><a href="#readme"><img src=".github/images/card.svg"/></a></p>
 
 <p align="center">
   <a href="https://kaos.sh/r/fmtc"><img src="https://kaos.sh/r/fmtc.svg" alt="GoReportCard" /></a>
   <a href="https://kaos.sh/w/fmtc/ci"><img src="https://kaos.sh/w/fmtc/ci.svg" alt="GitHub Actions CI Status" /></a>
   <a href="https://kaos.sh/w/fmtc/codeql"><img src="https://kaos.sh/w/fmtc/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
-  <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
+  <a href="#license"><img src=".github/images/license.svg"/></a>
 </p>
 
 <p align="center"><a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#ci-status">CI Status</a> • <a href="#contributing">Contributing</a> • <a href="#license">License</a></p>
@@ -13,9 +13,7 @@
 
 `fmtc` is a simple utility for rendering [fmtc](https://github.com/essentialkaos/ek/tree/master/fmtc#readme) formatted data. You can use it instead of the `echo` command to print colored messages.
 
-<p align="center">
-  <img src="https://gh.kaos.st/fmtc.png" alt="fmtc preview">
-</p>
+<p align="center"><img src=".github/images/preview.png" alt="fmtc preview"></p>
 
 ```bash
 # Simple formatted message
@@ -123,31 +121,7 @@ fmtc --generate-man | sudo gzip > /usr/share/man/man1/fmtc.1.gz
 
 ### Usage
 
-```
-Usage: fmtc {options} data…
-
-Options
-
-  --error, -E        Print data to stderr
-  --line, -L         Don't print newline at the end
-  --no-color, -nc    Disable colors in output
-  --help, -h         Show this help message
-  --version, -v      Show version
-
-Examples
-
-  fmtc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
-  Print fmtc formatted message
-
-  fmtc -E "{r*}There is no user bob{!}"
-  Print fmtc formatted message to stderr
-
-  fmtc -nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"
-  Print message without colors using -nc/--no-color option
-
-  echo "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}" | fmtc
-  Use stdin as a source of data
-```
+<p align="center"><img src=".github/images/usage.svg"/></p>
 
 ### CI Status
 
