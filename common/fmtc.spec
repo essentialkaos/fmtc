@@ -97,6 +97,9 @@ fi
 ################################################################################
 
 %changelog
+* Mon Jun 17 2024 Anton Novojilov <andy@essentialkaos.com> - 0.1.2-0
+- Dependencies update
+
 * Fri Mar 22 2024 Anton Novojilov <andy@essentialkaos.com> - 0.1.1-0
 - Improved support information gathering
 - Dependencies update
