@@ -6,7 +6,7 @@
 
 Summary:        Simple utility for rendering fmtc formatted data
 Name:           fmtc
-Version:        0.1.1
+Version:        0.1.2
 Release:        0%{?dist}
 Group:          Applications/System
 License:        Apache License, Version 2.0
@@ -32,9 +32,13 @@ Simple utility for rendering fmtc formatted data.
 
 %build
 if [[ ! -d "%{name}/vendor" ]] ; then
-  echo "This package requires vendored dependencies"
+  echo -e "----\nThis package requires vendored dependencies\n----"
+  exit 1
+elif [[ -f "%{name}/%{name}" ]] ; then
+  echo -e "----\nSources must not contain precompiled binaries\n----"
   exit 1
 fi
+
 
 pushd %{name}
   go build %{name}.go
