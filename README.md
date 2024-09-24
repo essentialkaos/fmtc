@@ -2,6 +2,7 @@
 
 <p align="center">
   <a href="https://kaos.sh/r/fmtc"><img src="https://kaos.sh/r/fmtc.svg" alt="GoReportCard" /></a>
+  <a href="https://kaos.sh/y/fmtc"><img src="https://kaos.sh/y/7e7c618ac47b4491b04b47bfbb51f2a9.svg" alt="Codacy" /></a>
   <a href="https://kaos.sh/w/fmtc/ci"><img src="https://kaos.sh/w/fmtc/ci.svg" alt="GitHub Actions CI Status" /></a>
   <a href="https://kaos.sh/w/fmtc/codeql"><img src="https://kaos.sh/w/fmtc/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
   <a href="#license"><img src=".github/images/license.svg"/></a>
@@ -71,7 +72,7 @@ EOF
 
 #### From source
 
-To build the `fmtc` from scratch, make sure you have a working Go 1.20+ workspace (_[instructions](https://go.dev/doc/install)_), then:
+To build the `fmtc` from scratch, make sure you have a working Go 1.22+ workspace (_[instructions](https://go.dev/doc/install)_), then:
 
 ```
 go install github.com/essentialkaos/fmtc@latest
