@@ -6,7 +6,7 @@
 
 Summary:        Simple utility for rendering fmtc formatted data
 Name:           fmtc
-Version:        1.0.0
+Version:        1.0.1
 Release:        0%{?dist}
 Group:          Applications/System
 License:        Apache License, Version 2.0
@@ -16,7 +16,7 @@ Source0:        https://source.kaos.st/%{name}/%{name}-%{version}.tar.bz2
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  golang >= 1.22
+BuildRequires:  golang >= 1.23
 
 Provides:       %{name} = %{version}-%{release}
 
@@ -97,6 +97,10 @@ fi
 ################################################################################
 
 %changelog
+* Thu Feb 06 2025 Anton Novojilov <andy@essentialkaos.com> - 1.0.1-0
+- Code refactoring
+- Dependencies update
+
 * Tue Sep 24 2024 Anton Novojilov <andy@essentialkaos.com> - 1.0.0-0
 - Migrated to v13 of ek package
 - Dependencies update
