@@ -2,7 +2,7 @@ package cli
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 //                                                                                    //
-//                         Copyright (c) 2024 ESSENTIAL KAOS                          //
+//                         Copyright (c) 2025 ESSENTIAL KAOS                          //
 //      Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>     //
 //                                                                                    //
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -18,6 +18,7 @@ import (
 	"github.com/essentialkaos/ek/v13/options"
 	"github.com/essentialkaos/ek/v13/support"
 	"github.com/essentialkaos/ek/v13/support/deps"
+	"github.com/essentialkaos/ek/v13/terminal"
 	"github.com/essentialkaos/ek/v13/terminal/tty"
 	"github.com/essentialkaos/ek/v13/usage"
 	"github.com/essentialkaos/ek/v13/usage/completion/bash"
@@ -31,7 +32,7 @@ import (
 // Basic utility info
 const (
 	APP  = "fmtc"
-	VER  = "1.0.0"
+	VER  = "1.0.1"
 	DESC = "Utility for rendering fmtc formatted data"
 )
 
@@ -83,8 +84,8 @@ func Run(gitRev string, gomod []byte) {
 
 	args, errs := options.Parse(optMap)
 
-	if len(errs) != 0 {
-		printError(errs[0].Error())
+	if !errs.IsEmpty() {
+		terminal.Error(errs.Error(" - "))
 		os.Exit(1)
 	}
 
@@ -173,15 +174,6 @@ func colorData(args options.Arguments) {
 	}
 }
 
-// printError prints error message to console
-func printError(f string, a ...interface{}) {
-	if len(a) == 0 {
-		fmtc.Fprintln(os.Stderr, "{r}"+f+"{!}")
-	} else {
-		fmtc.Fprintf(os.Stderr, "{r}"+f+"{!}\n", a...)
-	}
-}
-
 // ////////////////////////////////////////////////////////////////////////////////// //
 
 // printCompletion prints completion for given shell
@@ -190,11 +182,11 @@ func printCompletion() int {
 
 	switch options.GetS(OPT_COMPLETION) {
 	case "bash":
-		fmt.Printf(bash.Generate(info, "fmtc"))
+		fmt.Print(bash.Generate(info, "fmtc"))
 	case "fish":
-		fmt.Printf(fish.Generate(info, "fmtc"))
+		fmt.Print(fish.Generate(info, "fmtc"))
 	case "zsh":
-		fmt.Printf(zsh.Generate(info, optMap, "fmtc"))
+		fmt.Print(zsh.Generate(info, optMap, "fmtc"))
 	default:
 		return 1
 	}
@@ -204,12 +196,7 @@ func printCompletion() int {
 
 // printMan prints man page
 func printMan() {
-	fmt.Println(
-		man.Generate(
-			genUsage(),
-			genAbout(""),
-		),
-	)
+	fmt.Println(man.Generate(genUsage(), genAbout("")))
 }
 
 // genUsage generates usage info
@@ -261,6 +248,8 @@ func genAbout(gitRev string) *usage.About {
 		VersionColorTag: colorTagVer,
 
 		DescSeparator: "—",
+
+		BugTracker: "https://github.com/essentialkaos/fmtc/issues",
 	}
 
 	if gitRev != "" {
