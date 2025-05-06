@@ -32,7 +32,7 @@ import (
 // Basic utility info
 const (
 	APP  = "fmtc"
-	VER  = "1.0.1"
+	VER  = "1.0.2"
 	DESC = "Utility for rendering fmtc formatted data"
 )
 

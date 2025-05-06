@@ -6,7 +6,7 @@
 
 Summary:        Simple utility for rendering fmtc formatted data
 Name:           fmtc
-Version:        1.0.1
+Version:        1.0.2
 Release:        0%{?dist}
 Group:          Applications/System
 License:        Apache License, Version 2.0
@@ -97,6 +97,9 @@ fi
 ################################################################################
 
 %changelog
+* Tue May 06 2025 Anton Novojilov <andy@essentialkaos.com> - 1.0.2-0
+- Dependencies update
+
 * Thu Feb 06 2025 Anton Novojilov <andy@essentialkaos.com> - 1.0.1-0
 - Code refactoring
 - Dependencies update
