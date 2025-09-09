@@ -6,7 +6,7 @@
 
 Summary:        Simple utility for rendering fmtc formatted data
 Name:           fmtc
-Version:        1.0.2
+Version:        1.1.0
 Release:        0%{?dist}
 Group:          Applications/System
 License:        Apache License, Version 2.0
@@ -16,7 +16,7 @@ Source0:        https://source.kaos.st/%{name}/%{name}-%{version}.tar.bz2
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  golang >= 1.23
+BuildRequires:  golang >= 1.24
 
 Provides:       %{name} = %{version}-%{release}
 
@@ -97,6 +97,10 @@ fi
 ################################################################################
 
 %changelog
+* Tue Sep 09 2025 Anton Novojilov <andy@essentialkaos.com> - 1.1.0-0
+- Added '-e/--eval' option to eval escape sequences
+- Dependencies update
+
 * Tue May 06 2025 Anton Novojilov <andy@essentialkaos.com> - 1.0.2-0
 - Dependencies update
 

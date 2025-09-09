@@ -93,6 +93,23 @@ You can download prebuilt binaries for Linux and macOS from [EK Apps Repository]
 bash <(curl -fsSL https://apps.kaos.st/get) fmtc
 ```
 
+### Upgrading
+
+Since version `1.1.0` you can update `fmtc` to the latest release using [self-update feature](https://github.com/essentialkaos/.github/blob/master/APPS-UPDATE.md):
+
+```bash
+fmtc --update
+```
+
+This command will runs a self-update in interactive mode. If you want to run a quiet update (_no output_), use the following command:
+
+```bash
+fmtc --update=quiet
+```
+
+> [!NOTE]
+> Please note that the self-update feature only works with binaries that are downloaded from the [EK Apps Repository](https://apps.kaos.st/fmtc/latest). Binaries from packages do not have a self-update feature and must be upgraded via the package manager.
+
 ### Command-line completion
 
 You can generate completion for `bash`, `zsh` or `fish` shell.

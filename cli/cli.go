@@ -12,6 +12,8 @@ import (
 	"io"
 	"os"
 	"runtime"
+	"strconv"
+	"strings"
 
 	"github.com/essentialkaos/ek/v13/fmtc"
 	"github.com/essentialkaos/ek/v13/fsutil"
@@ -19,7 +21,6 @@ import (
 	"github.com/essentialkaos/ek/v13/support"
 	"github.com/essentialkaos/ek/v13/support/deps"
 	"github.com/essentialkaos/ek/v13/terminal"
-	"github.com/essentialkaos/ek/v13/terminal/tty"
 	"github.com/essentialkaos/ek/v13/usage"
 	"github.com/essentialkaos/ek/v13/usage/completion/bash"
 	"github.com/essentialkaos/ek/v13/usage/completion/fish"
@@ -32,7 +33,7 @@ import (
 // Basic utility info
 const (
 	APP  = "fmtc"
-	VER  = "1.0.2"
+	VER  = "1.1.0"
 	DESC = "Utility for rendering fmtc formatted data"
 )
 
@@ -40,12 +41,13 @@ const (
 
 // Options
 const (
-	OPT_ERROR    = "E:error"
-	OPT_LINE     = "L:line"
-	OPT_NO_COLOR = "nc:no-color"
-	OPT_HELP     = "h:help"
-	OPT_VER      = "v:version"
+	OPT_ERROR = "E:error"
+	OPT_EVAL  = "e:eval"
+	OPT_LINE  = "L:line"
+	OPT_HELP  = "h:help"
+	OPT_VER   = "v:version"
 
+	OPT_UPDATE       = "U:update"
 	OPT_VERB_VER     = "vv:verbose-version"
 	OPT_COMPLETION   = "completion"
 	OPT_GENERATE_MAN = "generate-man"
@@ -55,12 +57,13 @@ const (
 
 // optMap contains information about all supported options
 var optMap = options.Map{
-	OPT_ERROR:    {Type: options.BOOL},
-	OPT_LINE:     {Type: options.BOOL},
-	OPT_NO_COLOR: {Type: options.BOOL},
-	OPT_HELP:     {Type: options.BOOL},
-	OPT_VER:      {Type: options.MIXED},
+	OPT_ERROR: {Type: options.BOOL},
+	OPT_EVAL:  {Type: options.BOOL},
+	OPT_LINE:  {Type: options.BOOL},
+	OPT_HELP:  {Type: options.BOOL},
+	OPT_VER:   {Type: options.MIXED},
 
+	OPT_UPDATE:       {Type: options.MIXED},
 	OPT_VERB_VER:     {Type: options.BOOL},
 	OPT_COMPLETION:   {},
 	OPT_GENERATE_MAN: {Type: options.BOOL},
@@ -79,8 +82,6 @@ var colorTagVer string
 // Run is main utility function
 func Run(gitRev string, gomod []byte) {
 	runtime.GOMAXPROCS(1)
-
-	preConfigureUI()
 
 	args, errs := options.Parse(optMap)
 
@@ -104,6 +105,8 @@ func Run(gitRev string, gomod []byte) {
 		support.Collect(APP, VER).WithRevision(gitRev).
 			WithDeps(deps.Extract(gomod)).Print()
 		os.Exit(0)
+	case withSelfUpdate && options.GetB(OPT_UPDATE):
+		os.Exit(updateBinary())
 	case options.GetB(OPT_HELP):
 		genUsage().Print()
 		os.Exit(0)
@@ -114,19 +117,8 @@ func Run(gitRev string, gomod []byte) {
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
-// preConfigureUI preconfigures UI based on information about user terminal
-func preConfigureUI() {
-	if !tty.IsTTY() {
-		fmtc.DisableColors = true
-	}
-}
-
 // configureUI configures user interface
 func configureUI() {
-	if options.GetB(OPT_NO_COLOR) {
-		fmtc.DisableColors = true
-	}
-
 	switch {
 	case fmtc.IsTrueColorSupported():
 		colorTagApp, colorTagVer = "{*}{&}{#FF1D7C}", "{#FF1D7C}"
@@ -157,6 +149,10 @@ func colorData(args options.Arguments) {
 		} else {
 			os.Exit(1)
 		}
+	}
+
+	if options.GetB(OPT_EVAL) {
+		data, _ = strconv.Unquote(`"` + strings.ReplaceAll(data, `"`, `\"`) + `"`)
 	}
 
 	if options.GetB(OPT_LINE) || isStdin {
@@ -206,8 +202,13 @@ func genUsage() *usage.Info {
 	info.AppNameColorTag = colorTagApp
 
 	info.AddOption(OPT_ERROR, "Print data to stderr")
+	info.AddOption(OPT_EVAL, "Eval escape sequences")
 	info.AddOption(OPT_LINE, "Don't print newline at the end")
-	info.AddOption(OPT_NO_COLOR, "Disable colors in output")
+
+	if withSelfUpdate {
+		info.AddOption(OPT_UPDATE, "Update application to the latest version")
+	}
+
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
 
@@ -219,11 +220,6 @@ func genUsage() *usage.Info {
 	info.AddExample(
 		`-E "{r*}There is no user bob{!}"`,
 		"Print fmtc formatted message to stderr",
-	)
-
-	info.AddExample(
-		`-nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"`,
-		"Print message without colors using -nc/--no-color option",
 	)
 
 	info.AddRawExample(
@@ -249,7 +245,8 @@ func genAbout(gitRev string) *usage.About {
 
 		DescSeparator: "—",
 
-		BugTracker: "https://github.com/essentialkaos/fmtc/issues",
+		BugTracker:    "https://github.com/essentialkaos/fmtc/issues",
+		UpdateChecker: getUpdateChecker(),
 	}
 
 	if gitRev != "" {
