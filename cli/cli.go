@@ -47,6 +47,7 @@ const (
 	OPT_HELP  = "h:help"
 	OPT_VER   = "v:version"
 
+	OPT_UPDATE       = "U:update"
 	OPT_VERB_VER     = "vv:verbose-version"
 	OPT_COMPLETION   = "completion"
 	OPT_GENERATE_MAN = "generate-man"
@@ -62,6 +63,7 @@ var optMap = options.Map{
 	OPT_HELP:  {Type: options.BOOL},
 	OPT_VER:   {Type: options.MIXED},
 
+	OPT_UPDATE:       {Type: options.MIXED},
 	OPT_VERB_VER:     {Type: options.BOOL},
 	OPT_COMPLETION:   {},
 	OPT_GENERATE_MAN: {Type: options.BOOL},
@@ -103,6 +105,8 @@ func Run(gitRev string, gomod []byte) {
 		support.Collect(APP, VER).WithRevision(gitRev).
 			WithDeps(deps.Extract(gomod)).Print()
 		os.Exit(0)
+	case withSelfUpdate && options.GetB(OPT_UPDATE):
+		os.Exit(updateBinary())
 	case options.GetB(OPT_HELP):
 		genUsage().Print()
 		os.Exit(0)
@@ -200,6 +204,11 @@ func genUsage() *usage.Info {
 	info.AddOption(OPT_ERROR, "Print data to stderr")
 	info.AddOption(OPT_EVAL, "Eval escape sequences")
 	info.AddOption(OPT_LINE, "Don't print newline at the end")
+
+	if withSelfUpdate {
+		info.AddOption(OPT_UPDATE, "Update application to the latest version")
+	}
+
 	info.AddOption(OPT_HELP, "Show this help message")
 	info.AddOption(OPT_VER, "Show version")
 
@@ -211,11 +220,6 @@ func genUsage() *usage.Info {
 	info.AddExample(
 		`-E "{r*}There is no user bob{!}"`,
 		"Print fmtc formatted message to stderr",
-	)
-
-	info.AddExample(
-		`-nc "{*}Done!{!} File {#87}$file{!} successfully uploaded to {g_}$host{!}"`,
-		"Print message without colors using -nc/--no-color option",
 	)
 
 	info.AddRawExample(
@@ -241,7 +245,8 @@ func genAbout(gitRev string) *usage.About {
 
 		DescSeparator: "—",
 
-		BugTracker: "https://github.com/essentialkaos/fmtc/issues",
+		BugTracker:    "https://github.com/essentialkaos/fmtc/issues",
+		UpdateChecker: getUpdateChecker(),
 	}
 
 	if gitRev != "" {

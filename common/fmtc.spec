@@ -98,6 +98,7 @@ fi
 
 %changelog
 * Tue Sep 09 2025 Anton Novojilov <andy@essentialkaos.com> - 1.1.0-0
+- Added '-e/--eval' option to eval escape sequences
 - Dependencies update
 
 * Tue May 06 2025 Anton Novojilov <andy@essentialkaos.com> - 1.0.2-0
