@@ -33,7 +33,7 @@ import (
 // Basic utility info
 const (
 	APP  = "fmtc"
-	VER  = "2.0.0"
+	VER  = "2.0.1"
 	DESC = "Utility for rendering fmtc formatted data"
 )
 
@@ -153,7 +153,9 @@ func colorData(args options.Arguments) {
 	}
 
 	// Eval all escape sequences
-	data, _ = strconv.Unquote(`"` + strings.ReplaceAll(data, `"`, `\"`) + `"`)
+	if strings.ContainsRune(data, '\\') {
+		data, _ = strconv.Unquote(`"` + strings.ReplaceAll(data, `"`, `\"`) + `"`)
+	}
 
 	if options.GetB(OPT_LINE) || isStdin {
 		if options.GetB(OPT_ERROR) {
