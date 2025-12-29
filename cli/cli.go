@@ -65,6 +65,9 @@ var optMap = options.Map{
 	OPT_VERB_VER:     {Type: options.BOOL},
 	OPT_COMPLETION:   {},
 	OPT_GENERATE_MAN: {Type: options.BOOL},
+
+	// Deprecated option
+	"e:eval": {Type: options.BOOL},
 }
 
 // ////////////////////////////////////////////////////////////////////////////////// //
