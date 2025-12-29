@@ -33,7 +33,7 @@ import (
 // Basic utility info
 const (
 	APP  = "fmtc"
-	VER  = "1.1.0"
+	VER  = "2.0.0"
 	DESC = "Utility for rendering fmtc formatted data"
 )
 
@@ -42,7 +42,6 @@ const (
 // Options
 const (
 	OPT_ERROR = "E:error"
-	OPT_EVAL  = "e:eval"
 	OPT_LINE  = "L:line"
 	OPT_HELP  = "h:help"
 	OPT_VER   = "v:version"
@@ -58,7 +57,6 @@ const (
 // optMap contains information about all supported options
 var optMap = options.Map{
 	OPT_ERROR: {Type: options.BOOL},
-	OPT_EVAL:  {Type: options.BOOL},
 	OPT_LINE:  {Type: options.BOOL},
 	OPT_HELP:  {Type: options.BOOL},
 	OPT_VER:   {Type: options.MIXED},
@@ -151,9 +149,8 @@ func colorData(args options.Arguments) {
 		}
 	}
 
-	if options.GetB(OPT_EVAL) {
-		data, _ = strconv.Unquote(`"` + strings.ReplaceAll(data, `"`, `\"`) + `"`)
-	}
+	// Eval all escape sequences
+	data, _ = strconv.Unquote(`"` + strings.ReplaceAll(data, `"`, `\"`) + `"`)
 
 	if options.GetB(OPT_LINE) || isStdin {
 		if options.GetB(OPT_ERROR) {
@@ -202,7 +199,6 @@ func genUsage() *usage.Info {
 	info.AppNameColorTag = colorTagApp
 
 	info.AddOption(OPT_ERROR, "Print data to stderr")
-	info.AddOption(OPT_EVAL, "Eval escape sequences")
 	info.AddOption(OPT_LINE, "Don't print newline at the end")
 
 	if withSelfUpdate {
