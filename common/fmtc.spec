@@ -6,7 +6,7 @@
 
 Summary:        Simple utility for rendering fmtc formatted data
 Name:           fmtc
-Version:        2.0.1
+Version:        2.0.2
 Release:        0%{?dist}
 Group:          Applications/System
 License:        Apache License, Version 2.0
@@ -97,6 +97,9 @@ fi
 ################################################################################
 
 %changelog
+* Mon Jan 19 2026 Anton Novojilov <andy@essentialkaos.com> - 2.0.2-0
+- Dependencies update
+
 * Mon Dec 29 2025 Anton Novojilov <andy@essentialkaos.com> - 2.0.1-0
 - Fixed bug with handling stdin data
 
