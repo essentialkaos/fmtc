@@ -1,10 +1,9 @@
 <p align="center"><a href="#readme"><img src=".github/images/card.svg"/></a></p>
 
 <p align="center">
-  <a href="https://kaos.sh/r/fmtc"><img src="https://kaos.sh/r/fmtc.svg" alt="GoReportCard" /></a>
-  <a href="https://kaos.sh/y/fmtc"><img src="https://kaos.sh/y/7e7c618ac47b4491b04b47bfbb51f2a9.svg" alt="Codacy" /></a>
-  <a href="https://kaos.sh/w/fmtc/ci"><img src="https://kaos.sh/w/fmtc/ci.svg" alt="GitHub Actions CI Status" /></a>
-  <a href="https://kaos.sh/w/fmtc/codeql"><img src="https://kaos.sh/w/fmtc/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
+  <a href="https://kaos.sh/y/fmtc"><img src="https://app.codacy.com/project/badge/Grade/7e7c618ac47b4491b04b47bfbb51f2a9" alt="Codacy" /></a>
+  <a href="https://kaos.sh/w/fmtc/ci"><img src="https://github.com/essentialkaos/fmtc/actions/workflows/ci.yml/badge.svg" alt="GitHub Actions CI Status" /></a>
+  <a href="https://kaos.sh/w/fmtc/codeql"><img src="https://github.com/essentialkaos/fmtc/actions/workflows/codeql.yml/badge.svg" alt="GitHub Actions CodeQL Status" /></a>
   <a href="#license"><img src=".github/images/license.svg"/></a>
 </p>
 
@@ -72,7 +71,7 @@ EOF
 
 #### From source
 
-To build the `fmtc` from scratch, make sure you have a working Go 1.23+ workspace (_[instructions](https://go.dev/doc/install)_), then:
+To build the `fmtc` from scratch, make sure you have a working Go 1.25+ workspace (_[instructions](https://go.dev/doc/install)_), then:
 
 ```
 go install github.com/essentialkaos/fmtc@latest
@@ -116,17 +115,17 @@ You can generate completion for `bash`, `zsh` or `fish` shell.
 
 Bash:
 ```bash
-sudo fmtc --completion=bash 1> /etc/bash_completion.d/fmtc
+fmtc --completion=bash | sudo tee /etc/bash_completion.d/fmtc > /dev/null
 ```
 
 ZSH:
 ```bash
-sudo fmtc --completion=zsh 1> /usr/share/zsh/site-functions/fmtc
+fmtc --completion=zsh | sudo tee /usr/share/zsh/site-functions/fmtc > /dev/null
 ```
 
 Fish:
 ```bash
-sudo fmtc --completion=fish 1> /usr/share/fish/vendor_completions.d/fmtc.fish
+fmtc --completion=fish | sudo tee /usr/share/fish/vendor_completions.d/fmtc.fish > /dev/null
 ```
 
 ### Man documentation
@@ -145,8 +144,8 @@ fmtc --generate-man | sudo gzip > /usr/share/man/man1/fmtc.1.gz
 
 | Branch | Status |
 |--------|----------|
-| `master` | [![CI](https://kaos.sh/w/fmtc/ci.svg?branch=master)](https://kaos.sh/w/fmtc/ci?query=branch:master) |
-| `develop` | [![CI](https://kaos.sh/w/fmtc/ci.svg?branch=develop)](https://kaos.sh/w/fmtc/ci?query=branch:develop) |
+| `master` | [![CI](https://github.com/essentialkaos/fmtc/actions/workflows/ci.yml/badge.svg?branch=master)](https://kaos.sh/w/fmtc/ci?query=branch:master) |
+| `develop` | [![CI](https://github.com/essentialkaos/fmtc/actions/workflows/ci.yml/badge.svg?branch=develop)](https://kaos.sh/w/fmtc/ci?query=branch:develop) |
 
 ### Contributing
 

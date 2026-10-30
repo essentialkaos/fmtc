@@ -13,14 +13,14 @@ package cli
 import (
 	"strings"
 
-	"github.com/essentialkaos/ek/v13/fmtc"
-	"github.com/essentialkaos/ek/v13/options"
-	"github.com/essentialkaos/ek/v13/selfupdate"
-	"github.com/essentialkaos/ek/v13/selfupdate/interactive"
-	storage "github.com/essentialkaos/ek/v13/selfupdate/storage/basic"
-	"github.com/essentialkaos/ek/v13/terminal"
-	"github.com/essentialkaos/ek/v13/usage"
-	"github.com/essentialkaos/ek/v13/usage/update"
+	"github.com/essentialkaos/ek/v14/fmtc"
+	"github.com/essentialkaos/ek/v14/options"
+	"github.com/essentialkaos/ek/v14/selfupdate"
+	"github.com/essentialkaos/ek/v14/selfupdate/interactive"
+	storage "github.com/essentialkaos/ek/v14/selfupdate/storage/basic"
+	"github.com/essentialkaos/ek/v14/terminal"
+	"github.com/essentialkaos/ek/v14/usage"
+	"github.com/essentialkaos/ek/v14/usage/update"
 )
 
 // ////////////////////////////////////////////////////////////////////////////////// //
